@@ -8,12 +8,12 @@ object EnvironmentSettings {
     fun getCurrentEnvironment(context: Context): Environments {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
         val env = sharedPreferences.getString("env", "")
-        return if (env.equals("PRODUCTION", true) || env.equals("prod", true)) {
-            Environments.PRODUCTION
+        return if (env.equals("staging", true) || env.equals("stag", true)) {
+            Environments.STAGING
         } else if (env.equals("development", true) || env.equals("dev", true)) {
             Environments.DEVELOPMENT
         } else
-            Environments.STAGING
+            Environments.PRODUCTION
     }
 
     enum class Environments {
